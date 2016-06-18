@@ -1,5 +1,9 @@
 package com.flymatcher.itinerary;
 
+import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
+
 public class FlightMatch {
 
   private String destination;
@@ -14,7 +18,7 @@ public class FlightMatch {
     return destination;
   }
 
-  public void setDestination(String destination) {
+  public void setDestination(final String destination) {
     this.destination = destination;
   }
 
@@ -22,7 +26,7 @@ public class FlightMatch {
     return price;
   }
 
-  public void setPrice(double price) {
+  public void setPrice(final double price) {
     this.price = price;
   }
 
@@ -30,7 +34,7 @@ public class FlightMatch {
     return outboundDate;
   }
 
-  public void setOutboundDate(String outboundDate) {
+  public void setOutboundDate(final String outboundDate) {
     this.outboundDate = outboundDate;
   }
 
@@ -38,8 +42,23 @@ public class FlightMatch {
     return inboundDate;
   }
 
-  public void setInboundDate(String inboundDate) {
+  public void setInboundDate(final String inboundDate) {
     this.inboundDate = inboundDate;
+  }
+
+  @Override
+  public int hashCode() {
+    return reflectionHashCode(this);
+  }
+
+  @Override
+  public boolean equals(final Object obj) {
+    return reflectionEquals(this, obj);
+  }
+
+  @Override
+  public String toString() {
+    return reflectionToString(this);
   }
 
 }
