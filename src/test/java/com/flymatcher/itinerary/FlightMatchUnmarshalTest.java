@@ -21,6 +21,7 @@ public class FlightMatchUnmarshalTest {
   @Before
   public void setup() {
     mapper = new ObjectMapper();
+    mapper.findAndRegisterModules();
   }
 
   @Test

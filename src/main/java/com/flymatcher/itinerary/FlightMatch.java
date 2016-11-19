@@ -4,15 +4,21 @@ import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FlightMatch {
 
   private String destination;
 
   private double price;
 
-  private String outboundDate;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate outboundDate;
 
-  private String inboundDate;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate inboundDate;
 
   public String getDestination() {
     return destination;
@@ -30,19 +36,19 @@ public class FlightMatch {
     this.price = price;
   }
 
-  public String getOutboundDate() {
+  public LocalDate getOutboundDate() {
     return outboundDate;
   }
 
-  public void setOutboundDate(final String outboundDate) {
+  public void setOutboundDate(final LocalDate outboundDate) {
     this.outboundDate = outboundDate;
   }
 
-  public String getInboundDate() {
+  public LocalDate getInboundDate() {
     return inboundDate;
   }
 
-  public void setInboundDate(final String inboundDate) {
+  public void setInboundDate(final LocalDate inboundDate) {
     this.inboundDate = inboundDate;
   }
 

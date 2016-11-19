@@ -1,5 +1,9 @@
 package com.flymatcher.itinerary.builders;
 
+import static java.time.LocalDate.parse;
+
+import java.time.LocalDate;
+
 import com.flymatcher.itinerary.FlightMatch;
 
 public class FlightMatchBuilder {
@@ -8,9 +12,9 @@ public class FlightMatchBuilder {
 
   private double price;
 
-  private String outboundDate;
+  private LocalDate outboundDate;
 
-  private String inboundDate;
+  private LocalDate inboundDate;
 
   protected FlightMatchBuilder() {}
 
@@ -30,11 +34,8 @@ public class FlightMatchBuilder {
   }
 
   public FlightMatchBuilder withDefaultValues() {
-    this.destination = "PARIS";
-    this.price = 100.0;
-    this.inboundDate = "2016-01-01";
-    this.outboundDate = "2016-01-01";
-    return this;
+    return this.withDestination("PARIS").withInboundDate("2016-01-01")
+        .withOutboundDate("2016-01-01").withPrice(100.0);
   }
 
   public FlightMatchBuilder withDestination(final String destination) {
@@ -47,12 +48,23 @@ public class FlightMatchBuilder {
     return this;
   }
 
-  public FlightMatchBuilder withInboundDate(final String inboundDate) {
+  public FlightMatchBuilder withInboundDate(final LocalDate inboundDate) {
     this.inboundDate = inboundDate;
     return this;
   }
 
+  public FlightMatchBuilder withInboundDate(final String inboundDate) {
+    this.inboundDate = parse(inboundDate);
+    return this;
+  }
+
+
   public FlightMatchBuilder withOutboundDate(final String outboundDate) {
+    this.outboundDate = parse(outboundDate);
+    return this;
+  }
+
+  public FlightMatchBuilder withOutboundDate(final LocalDate outboundDate) {
     this.outboundDate = outboundDate;
     return this;
   }
