@@ -70,11 +70,11 @@
 		</plugins>
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>libs-release-local</id>
-			<url>file:///c:/dev/flymatcher/repo/release</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo.write</id>
+            <url>https://mymavenrepo.com/repo/XtXFkq99yps1XEblfoBu</url>
+        </repository>
+    </distributionManagement>
 
 </project>
