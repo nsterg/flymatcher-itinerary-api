@@ -12,6 +12,10 @@ public class FlightMatch {
 
   private String destination;
 
+  private String airportCode;
+
+  private String country;
+
   private double price;
 
   @JsonFormat(pattern = "yyyy-MM-dd")
@@ -26,6 +30,22 @@ public class FlightMatch {
 
   public void setDestination(final String destination) {
     this.destination = destination;
+  }
+
+  public String getAirportCode() {
+    return airportCode;
+  }
+
+  public void setAirportCode(final String airportCode) {
+    this.airportCode = airportCode;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(final String country) {
+    this.country = country;
   }
 
   public double getPrice() {

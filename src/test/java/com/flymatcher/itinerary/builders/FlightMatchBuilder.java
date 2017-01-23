@@ -9,7 +9,8 @@ import com.flymatcher.itinerary.FlightMatch;
 public class FlightMatchBuilder {
 
   private String destination;
-
+  private String airportCode;
+  private String country;
   private double price;
 
   private LocalDate outboundDate;
@@ -26,6 +27,8 @@ public class FlightMatchBuilder {
     final FlightMatch flightMatch = new FlightMatch();
 
     flightMatch.setDestination(destination);
+    flightMatch.setAirportCode(airportCode);
+    flightMatch.setCountry(country);
     flightMatch.setInboundDate(inboundDate);
     flightMatch.setOutboundDate(outboundDate);
     flightMatch.setPrice(price);
@@ -35,11 +38,22 @@ public class FlightMatchBuilder {
 
   public FlightMatchBuilder withDefaultValues() {
     return this.withDestination("PARIS").withInboundDate("2016-01-01")
-        .withOutboundDate("2016-01-01").withPrice(100.0);
+        .withOutboundDate("2016-01-01").withPrice(100.0).withAirportCode("CDG")
+        .withCountry("France");
   }
 
   public FlightMatchBuilder withDestination(final String destination) {
     this.destination = destination;
+    return this;
+  }
+
+  public FlightMatchBuilder withCountry(final String country) {
+    this.country = country;
+    return this;
+  }
+
+  public FlightMatchBuilder withAirportCode(final String airportCode) {
+    this.airportCode = airportCode;
     return this;
   }
 

@@ -1,5 +1,7 @@
 {
       "destination":"PARIS",
+      "airportCode":"CDG",
+      "country":"France",      
       "price":100.0,
       "outboundDate":"2016-01-01",
       "inboundDate":"2016-01-01"
