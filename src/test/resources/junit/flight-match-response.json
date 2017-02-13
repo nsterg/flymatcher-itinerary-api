@@ -1,9 +1,6 @@
 {
       "destination":"PARIS",
-      "routes":[
-	      {"originAirport": "MAD", "destinationAirport": "CDG"},
-	      {"originAirport": "ATH", "destinationAirport": "CDG"}
-      ],
+      "airportCode":"CDG",
       "country":"France",      
       "price":100.0,
       "outboundDate":"2016-01-01",
