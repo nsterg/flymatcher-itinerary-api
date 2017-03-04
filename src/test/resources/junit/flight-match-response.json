@@ -1,6 +1,9 @@
 {
       "destination":"PARIS",
-      "airportCode":"CDG",
+      "routes":[
+	      {"originAirportCode": "MAD", "destinationAirportCode": "CDG","originAirport": "Madrid", "destinationAirport": "Paris Charles de Gaulle","price":60},
+	      {"originAirportCode": "ATH", "destinationAirportCode": "CDG","originAirport": "Athens", "destinationAirport": "Paris Charles de Gaulle","price":40}
+      ],
       "country":"France",      
       "price":100.0,
       "outboundDate":"2016-01-01",

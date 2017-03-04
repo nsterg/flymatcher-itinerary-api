@@ -1,15 +1,20 @@
 package com.flymatcher.itinerary.builders;
 
+import static com.flymatcher.itinerary.builders.RouteBuilder.aRoute;
 import static java.time.LocalDate.parse;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.flymatcher.itinerary.FlightMatch;
+import com.flymatcher.itinerary.Route;
 
 public class FlightMatchBuilder {
 
   private String destination;
-  private String airportCode;
+  private List<Route> routes;
   private String country;
   private double price;
 
@@ -27,7 +32,7 @@ public class FlightMatchBuilder {
     final FlightMatch flightMatch = new FlightMatch();
 
     flightMatch.setDestination(destination);
-    flightMatch.setAirportCode(airportCode);
+    flightMatch.setRoutes(routes);
     flightMatch.setCountry(country);
     flightMatch.setInboundDate(inboundDate);
     flightMatch.setOutboundDate(outboundDate);
@@ -37,9 +42,22 @@ public class FlightMatchBuilder {
   }
 
   public FlightMatchBuilder withDefaultValues() {
-    return this.withDestination("PARIS").withInboundDate("2016-01-01")
-        .withOutboundDate("2016-01-01").withPrice(100.0).withAirportCode("CDG")
-        .withCountry("France");
+    // @formatter:off
+      return this
+            .withDestination("PARIS")
+            .withInboundDate("2016-01-01")
+            .withOutboundDate("2016-01-01")
+            .withPrice(100.0)
+                .withRoutes(aRoute()
+                    .withOriginAirportCode("MAD").withDestinationAirportCode("CDG").withPrice(60)
+                    .withOriginAirport("Madrid").withDestinationAirport("Paris Charles de Gaulle"),
+                            aRoute()
+                            .withOriginAirportCode("ATH").withDestinationAirportCode("CDG").withPrice(40)
+                            .withOriginAirport("Athens").withDestinationAirport("Paris Charles de Gaulle")                            
+                    )
+            .withCountry("France");
+    // @formatter:on
+
   }
 
   public FlightMatchBuilder withDestination(final String destination) {
@@ -52,8 +70,19 @@ public class FlightMatchBuilder {
     return this;
   }
 
-  public FlightMatchBuilder withAirportCode(final String airportCode) {
-    this.airportCode = airportCode;
+  public FlightMatchBuilder withRoutes(final RouteBuilder... builders) {
+    return withRoutes(Arrays.asList(builders));
+  }
+
+  public FlightMatchBuilder withRoutes(final List<RouteBuilder> builders) {
+    if (null == this.routes) {
+      this.routes = new ArrayList<Route>();
+    }
+
+    for (final RouteBuilder builder : builders) {
+      this.routes.add(builder.build());
+    }
+
     return this;
   }
 
@@ -71,7 +100,6 @@ public class FlightMatchBuilder {
     this.inboundDate = parse(inboundDate);
     return this;
   }
-
 
   public FlightMatchBuilder withOutboundDate(final String outboundDate) {
     this.outboundDate = parse(outboundDate);

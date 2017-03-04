@@ -5,6 +5,7 @@ import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode
 import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,7 +13,7 @@ public class FlightMatch {
 
   private String destination;
 
-  private String airportCode;
+  private List<Route> routes;
 
   private String country;
 
@@ -32,12 +33,12 @@ public class FlightMatch {
     this.destination = destination;
   }
 
-  public String getAirportCode() {
-    return airportCode;
+  public List<Route> getRoutes() {
+    return routes;
   }
 
-  public void setAirportCode(final String airportCode) {
-    this.airportCode = airportCode;
+  public void setRoutes(final List<Route> routes) {
+    this.routes = routes;
   }
 
   public String getCountry() {
